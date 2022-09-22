@@ -8,6 +8,9 @@ Show how to seed true randomness into bias algorithms of selection. EG: Create t
 
 This script shortens down a `randomness` value from the network and uses it as a probability for selecting an item.
 
+### Requirements 
+Node 12 and up
+
 # Run
 1. `npm install`
 
