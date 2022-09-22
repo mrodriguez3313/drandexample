@@ -5,7 +5,7 @@ import AbortController from 'abort-controller'
 global.fetch = fetch
 global.AbortController = AbortController
 const HEX = 16;
-const WEIGHTS = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "mole_verde": 0.03, "shrimp": .03 }
+const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "mole_verde": 0.03, "shrimp": .03 }
 
 const chainHash = '8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce' // (hex encoded)
 const urls = [
@@ -15,7 +15,7 @@ const urls = [
 /*
   Example: Imagine you are a full time L5 software engineer and have more important things to think about than what to get for lunch.
           You decide to leave it up to randomness to choose your next meal. But you still have preferences.
-          You assign weights to the your preferences such that items you would like to eat most often have heavier weights (chances of being chosen)
+          You assign weights to your preferences such that items you would like to eat most often have heavier weights (chances of being chosen)
           And things you don't want to eat as often, have smaller probability of being chosen.
 */
 
@@ -59,8 +59,9 @@ async function weightedRandom(prob) {
   }
 }
 
-//run code above
-weightedRandom(WEIGHTS).then((biasedKey) => (console.log(biasedKey)))
+//runs code above
+weightedRandom(FoodOptions).then((lunch) => (console.log(lunch)))
+// Press Ctrl + C to stop example!
 
 /* Things to note:
     Drand mainnet releases a random number every 30 seconds. The problem that arises is if you want to test if the biased randomness works or not, it would take a really long time to test.
