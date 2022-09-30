@@ -31,11 +31,9 @@ async function weightedRandom(prob) {
 
   // e.g. use the client to get the latest randomness round:
   const res = await client.get()
-  // console.log(res.round, res.randomness)
 
-  // assign randomness value as a string to a variable
+  // Get a number between 0 and 100 from Drand.
   const rand = randomPercentFrom(res.randomness)
-  console.log("rand", rand)
 
   // This for loop selects which key:pair to return
   let sum = 0, r = rand;
@@ -54,10 +52,6 @@ weightedRandom(FoodOptions).then((lunch) => (console.log(lunch)))
 /* Things to note:
     Drand mainnet releases a random number every 30 seconds. The problem that arises is if you want to test if the biased randomness works or not, it would take a really long time to test.
     There is work to shorten this time frame to 3 seconds, which is better, but its not as convenient as instant access of psuedo-random numbers like math.random() or crypto.getRandomValues().
-
-    This "biased" algo is not sophisticated, weights are not changing every iteration to actively control supply.
-    Ideally, we have a neural net that adjusts weights in order to control supply ratio.
-    Or some other algorithm that handled weights better, instead of just summation of key:pair values.
 */
 
 function randomPercentFrom(randomness) {
