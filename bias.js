@@ -22,7 +22,9 @@ const urls = [
 // This function takes in a list of items and the probablilty of them being selected.
 //    returns the number that is randomly selected 
 async function weightedRandom(prob) {
-
+  if (validateWeights(prob) == -1) {
+    return "Weights not equal to 1"
+  }
   const options = { chainHash }
 
   const client = await Client.wrap(HTTP.forURLs(urls, chainHash), options)
@@ -71,4 +73,15 @@ function randomPercentFrom(randomness) {
     i++;
   }
   return randomDecimal;
+}
+
+function validateWeights(probabilities) {
+  var sum = 0;
+  for (let [_, value] of Object.entries(probabilities)) {
+    sum += value;
+  }
+  if (sum != 1) {
+    return -1;
+  }
+  return 0;
 }
