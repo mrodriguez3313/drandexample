@@ -32,27 +32,13 @@ async function weightedRandom(prob) {
   // console.log(res.round, res.randomness)
 
   // assign randomness value as a string to a variable
-  const randomness = res.randomness
-
-  // grab the left most 12 digits
-  const drand = randomness.slice(0, 12)
-  // console.log("drand", drand)
-
-  // Convert hexadecimal randomness value to decimal (base16 -> base10)
-  var base10 = parseInt(drand, HEX)
-  // console.log("base10", base10)
-
-  // "normalize" rand value to be a percentage (between 0-1)
-  var normal = base10
-  while (normal > 1){
-    normal /= 10;
-  }
-  console.log("normalize", parseFloat(normal.toFixed(8)))
+  const rand = randomPercentFrom(res.randomness)
+  console.log("rand", rand)
 
   // This for loop selects which key:pair to return
-  let sum = 0, r = parseFloat(normal.toFixed(8));
+  let sum = 0, r = rand;
   for (let [key, value] of Object.entries(prob)) {
-    sum += value;
+    sum += value * 100;
     if (r <= sum) {
       return key;
     }
@@ -71,3 +57,18 @@ weightedRandom(FoodOptions).then((lunch) => (console.log(lunch)))
     Ideally, we have a neural net that adjusts weights in order to control supply ratio.
     Or some other algorithm that handled weights better, instead of just summation of key:pair values.
 */
+
+function randomPercentFrom(randomness) {
+  var i = 0;
+  var randomDecimal = -1;
+  var rand;
+
+  while (randomDecimal <= 0 || randomDecimal > 100) {
+    // Grab only 2 digits from randomness, in a "sliding window" fashion
+    rand = randomness.slice(0 + i, 2 + i);
+    // Convert hexadecimal randomness value to decimal (base16 -> base10)
+    randomDecimal = parseInt(rand, HEX);
+    i++;
+  }
+  return randomDecimal;
+}
