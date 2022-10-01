@@ -5,11 +5,11 @@ import AbortController from 'abort-controller';
 global.fetch = fetch;
 global.AbortController = AbortController;
 
-const chainHash = '8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce'; // (hex encoded)
+const chainHash = '8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce'; // Mainnet chain hash (hex encoded)
 const urls = [
   'https://api.drand.sh',
   'https://drand.cloudflare.com'
-];
+]; // various endpoint options to access Drand network. 
 
 const HEX = 16;
 const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "molé_verde": 0.03, "shrimp": .03 };
