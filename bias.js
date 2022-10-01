@@ -4,14 +4,15 @@ import AbortController from 'abort-controller'
 
 global.fetch = fetch
 global.AbortController = AbortController
-const HEX = 16;
-const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "mole_verde": 0.03, "shrimp": .03 }
 
 const chainHash = '8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce' // (hex encoded)
 const urls = [
   'https://api.drand.sh',
   'https://drand.cloudflare.com'
 ]
+
+const HEX = 16;
+const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "mole_verde": 0.03, "shrimp": .03 }
 
 // This function takes in a list of items and the probablilty of them being selected.
 //    returns the number that is randomly selected 
