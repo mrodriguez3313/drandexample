@@ -12,12 +12,6 @@ const urls = [
   'https://api.drand.sh',
   'https://drand.cloudflare.com'
 ]
-/*
-  Example: Imagine you are a full time L5 software engineer and have more important things to think about than what to get for lunch.
-          You decide to leave it up to randomness to choose your next meal. But you still have preferences.
-          You assign weights to your preferences such that items you would like to eat most often have heavier weights (chances of being chosen)
-          And things you don't want to eat as often, have smaller probability of being chosen.
-*/
 
 // This function takes in a list of items and the probablilty of them being selected.
 //    returns the number that is randomly selected 
@@ -48,11 +42,6 @@ async function weightedRandom(prob) {
 //runs code above
 weightedRandom(FoodOptions).then((lunch) => (console.log(lunch)))
 // Press Ctrl + C to stop example!
-
-/* Things to note:
-    Drand mainnet releases a random number every 30 seconds. The problem that arises is if you want to test if the biased randomness works or not, it would take a really long time to test.
-    There is work to shorten this time frame to 3 seconds, which is better, but its not as convenient as instant access of psuedo-random numbers like math.random() or crypto.getRandomValues().
-*/
 
 // This function returns a number between 0 & 99.
 function randomPercentFrom(randomness) {
