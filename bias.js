@@ -12,7 +12,7 @@ const urls = [
 ];
 
 const HEX = 16;
-const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "mole_verde": 0.03, "shrimp": .03 };
+const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07, "molé_verde": 0.03, "shrimp": .03 };
 
 // This function takes in a list of items and the probablilty of them being selected.
 //    returns the number that is randomly selected 
