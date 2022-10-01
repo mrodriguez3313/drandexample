@@ -17,7 +17,7 @@ const FoodOptions = { "pho": 0.3, "croquets": 0.29, "pizza": 0.28, "pasta": 0.07
 // This function takes in a list of items and the probablilty of them being selected.
 //    returns the number that is randomly selected 
 async function weightedRandom(prob) {
-  if (validateWeights(prob) == -1) {
+  if (validateWeights(prob) != 1) {
     return "Weights not equal to 1"
   }
   const options = { chainHash }
@@ -66,8 +66,5 @@ function validateWeights(probabilities) {
   for (let [_, value] of Object.entries(probabilities)) {
     sum += value;
   }
-  if (sum != 1) {
-    return -1;
-  }
-  return 0;
+  return sum;
 }
