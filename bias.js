@@ -54,6 +54,7 @@ weightedRandom(FoodOptions).then((lunch) => (console.log(lunch)))
     There is work to shorten this time frame to 3 seconds, which is better, but its not as convenient as instant access of psuedo-random numbers like math.random() or crypto.getRandomValues().
 */
 
+// This function returns a number between 0 & 99.
 function randomPercentFrom(randomness) {
   var i = 0;
   var randomDecimal = -1;
@@ -69,6 +70,7 @@ function randomPercentFrom(randomness) {
   return randomDecimal;
 }
 
+// This function checks the user input to make sure all probabilities add up to 1
 function validateWeights(probabilities) {
   var sum = 0;
   for (let [_, value] of Object.entries(probabilities)) {
